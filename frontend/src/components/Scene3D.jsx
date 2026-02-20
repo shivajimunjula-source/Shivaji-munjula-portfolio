@@ -101,13 +101,13 @@ function GridFloor() {
     }
   });
   
+  const grid = useMemo(() => {
+    return new THREE.GridHelper(50, 50, '#10b981', '#0f172a');
+  }, []);
+  
   return (
     <group position={[0, -5, 0]}>
-      <gridHelper
-        ref={gridRef}
-        args={[50, 50, '#10b981', '#0f172a']}
-        rotation={[0, 0, 0]}
-      />
+      <primitive ref={gridRef} object={grid} />
     </group>
   );
 }
