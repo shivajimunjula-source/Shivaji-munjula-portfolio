@@ -1,31 +1,30 @@
 import React, { useRef, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, Stars, Float, MeshDistortMaterial, Sphere } from '@react-three/drei';
+import { OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
 
 // Animated Particles
 function Particles({ count = 1000 }) {
-  const mesh = useRef();
+  const pointsRef = useRef();
   
   const particles = useMemo(() => {
-    const temp = [];
+    const positions = new Float32Array(count * 3);
     for (let i = 0; i < count; i++) {
-      const x = (Math.random() - 0.5) * 50;
-      const y = (Math.random() - 0.5) * 50;
-      const z = (Math.random() - 0.5) * 50;
-      temp.push(x, y, z);
+      positions[i * 3] = (Math.random() - 0.5) * 50;
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 50;
+      positions[i * 3 + 2] = (Math.random() - 0.5) * 50;
     }
-    return new Float32Array(temp);
+    return positions;
   }, [count]);
   
   useFrame((state) => {
-    if (mesh.current) {
-      mesh.current.rotation.y = state.clock.elapsedTime * 0.05;
+    if (pointsRef.current) {
+      pointsRef.current.rotation.y = state.clock.elapsedTime * 0.05;
     }
   });
   
   return (
-    <points ref={mesh}>
+    <points ref={pointsRef}>
       <bufferGeometry>
         <bufferAttribute
           attach="attributes-position"
@@ -45,26 +44,30 @@ function Particles({ count = 1000 }) {
   );
 }
 
-// Floating Sphere with Distortion
-function DistortedSphere({ position, color, speed = 1 }) {
+// Floating Sphere
+function FloatingSphere({ position, color }) {
+  const meshRef = useRef();
+  const randomOffset = useMemo(() => Math.random() * Math.PI * 2, []);
+  
+  useFrame((state) => {
+    if (meshRef.current) {
+      meshRef.current.position.y = position[1] + Math.sin(state.clock.elapsedTime + randomOffset) * 0.5;
+      meshRef.current.rotation.x = state.clock.elapsedTime * 0.3;
+      meshRef.current.rotation.y = state.clock.elapsedTime * 0.2;
+    }
+  });
+  
   return (
-    <Float
-      speed={speed}
-      rotationIntensity={0.5}
-      floatIntensity={0.5}
-      position={position}
-    >
-      <Sphere args={[1, 64, 64]}>
-        <MeshDistortMaterial
-          color={color}
-          attach="material"
-          distort={0.4}
-          speed={2}
-          roughness={0.2}
-          metalness={0.8}
-        />
-      </Sphere>
-    </Float>
+    <mesh ref={meshRef} position={position}>
+      <sphereGeometry args={[1, 32, 32]} />
+      <meshStandardMaterial
+        color={color}
+        roughness={0.2}
+        metalness={0.8}
+        emissive={color}
+        emissiveIntensity={0.2}
+      />
+    </mesh>
   );
 }
 
@@ -86,8 +89,54 @@ function AnimatedRing() {
         color="#3b82f6"
         emissive="#3b82f6"
         emissiveIntensity={0.5}
+        roughness={0.3}
       />
     </mesh>
+  );
+}
+
+// Animated Stars Background
+function StarsField() {
+  const starsRef = useRef();
+  
+  const starPositions = useMemo(() => {
+    const positions = new Float32Array(5000 * 3);
+    for (let i = 0; i < 5000; i++) {
+      const radius = 100;
+      const theta = 2 * Math.PI * Math.random();
+      const phi = Math.acos(2 * Math.random() - 1);
+      
+      positions[i * 3] = radius * Math.sin(phi) * Math.cos(theta);
+      positions[i * 3 + 1] = radius * Math.sin(phi) * Math.sin(theta);
+      positions[i * 3 + 2] = radius * Math.cos(phi);
+    }
+    return positions;
+  }, []);
+  
+  useFrame((state) => {
+    if (starsRef.current) {
+      starsRef.current.rotation.y = state.clock.elapsedTime * 0.02;
+    }
+  });
+  
+  return (
+    <points ref={starsRef}>
+      <bufferGeometry>
+        <bufferAttribute
+          attach="attributes-position"
+          count={starPositions.length / 3}
+          array={starPositions}
+          itemSize={3}
+        />
+      </bufferGeometry>
+      <pointsMaterial
+        size={0.1}
+        color="#ffffff"
+        sizeAttenuation
+        transparent
+        opacity={0.8}
+      />
+    </points>
   );
 }
 
@@ -133,21 +182,13 @@ export default function Scene3D() {
         />
         
         {/* 3D Elements */}
-        <Stars
-          radius={100}
-          depth={50}
-          count={5000}
-          factor={4}
-          saturation={0}
-          fade
-          speed={1}
-        />
+        <StarsField />
         
         <Particles count={800} />
         
-        <DistortedSphere position={[-4, 2, -2]} color="#10b981" speed={1.5} />
-        <DistortedSphere position={[4, -2, -3]} color="#3b82f6" speed={2} />
-        <DistortedSphere position={[0, 3, -5]} color="#06b6d4" speed={1} />
+        <FloatingSphere position={[-4, 2, -2]} color="#10b981" />
+        <FloatingSphere position={[4, -2, -3]} color="#3b82f6" />
+        <FloatingSphere position={[0, 3, -5]} color="#06b6d4" />
         
         <AnimatedRing />
         
