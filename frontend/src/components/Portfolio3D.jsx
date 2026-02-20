@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import Scene3D from './Scene3D';
+import { motion } from 'framer-motion';
+import AnimatedBackground from './AnimatedBackground';
 import {
   personalInfo,
   about,
@@ -13,7 +13,6 @@ import {
 import '../styles/Portfolio3D.css';
 
 function Portfolio3D() {
-  const { scrollYProgress } = useScroll();
   const [activeSection, setActiveSection] = useState('home');
 
   // Scroll to section
@@ -65,8 +64,8 @@ function Portfolio3D() {
 
   return (
     <div className="portfolio-container">
-      {/* 3D Background Scene */}
-      <Scene3D />
+      {/* Animated Background */}
+      <AnimatedBackground />
 
       {/* Navigation */}
       <nav className="nav-bar">
