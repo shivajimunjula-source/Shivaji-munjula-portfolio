@@ -5,9 +5,9 @@ export const personalInfo = {
   title: "Software Engineer – Omniverse | OpenUSD & Digital Twin Simulation",
   tagline: "Crafting Immersive Digital Experiences",
   location: "Chennai, India",
-  email: "shivaji.munjula@example.com",
-  linkedin: "linkedin.com/in/shivaji-munjula",
-  github: "github.com/shivajimunjula",
+  email: "shivajimunjula@gmail.com",
+  linkedin: "linkedin.com/in/shivaji-munjula-sde",
+  github: "github.com/shivajimunjula-source",
   website: "shivajimunjula.dev"
 };
 
