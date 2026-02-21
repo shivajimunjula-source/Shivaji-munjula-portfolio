@@ -326,10 +326,10 @@ function Portfolio3D() {
                 <a href={`mailto:${personalInfo.email}`} className="contact-btn">
                   Email Me
                 </a>
-                <a href="#" className="contact-btn">
+                <a href="https://linkedin.com/in/shivaji-munjula-sde" className="contact-btn">
                   LinkedIn
                 </a>
-                <a href="#" className="contact-btn">
+                <a href="https://github.com/shivajimunjula-source" className="contact-btn">
                   GitHub
                 </a>
               </motion.div>
