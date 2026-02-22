@@ -1,56 +1,76 @@
-# Here are your Instructions
-# Shivaji Munjula | Portfolio 🚀
-A professional portfolio showcasing my work as an Omniverse and Simulation Engineer at TCS. This project highlights my expertise in Unity, NVIDIA Omniverse, and Industrial Digital Twins.
 
-🛠 Tech Stack
-Core: React 19 (via CRACO)
+# 🚀 Shivaji Munjula | Portfolio
 
-Styling: Tailwind CSS, Framer Motion, Lucide React
+Welcome to my personal portfolio. I am a **24-year-old Physical AI Engineer** currently working at **TCS**. My work focuses on bridging the gap between physical and digital reality through **Industrial Digital Twins** and **Immersive Technologies**.
 
-UI Components: Radix UI, Shadcn/UI (via @radix-ui and class-variance-authority)
+## 🛠 Technical Expertise
 
-3D Rendering: Three.js, @react-three/fiber, @react-three/drei
+I specialize in high-fidelity 3D environments and automation protocols:
 
-Deployment: Vercel
+* **Core Technologies:** Unity, NVIDIA Omniverse, Isaac Sim.
+* **Automation & Robotics:** ROS, PLCs, SCADA, and MQTT.
+* **Programming:** Python,C# and JavaScript/React.
+* **Project Focus:** Digital Twins, Industrial Automation, and AI-driven Filmmaking.
 
-🌟 Key Projects
-Digital Twins: Implementing industrial solutions using Omniverse and Isaac Sim.
+---
 
-AR/VR Engineering: Developing immersive experiences with Unity.
+## 🌟 Featured Projects
 
-Film & AI: Exploring AI's application in filmmaking.
+### **Industrial Digital Twins**
 
-🚀 Local Installation
-Because this project uses React 19 with dependencies that have strict peer-dependency requirements, you must use the --legacy-peer-deps flag during installation.
+Integrating **NVIDIA Omniverse** with robotics to create real-time mirrors of industrial processes, focusing on predictive maintenance and simulation.
 
-Clone the repository:
 
-Bash
+
+---
+
+## 💻 Local Development
+
+This project is built using **React 19** and **CRACO**. Due to strict peer-dependency requirements in the React 19 ecosystem, follow these specific installation steps:
+
+### **Prerequisites**
+
+* **Node.js** (v18.x or higher recommended)
+* **Git** installed and configured
+
+### **Setup Instructions**
+
+1. **Clone the Repository**
+```bash
 git clone https://github.com/shivajimunjula-source/Shivaji-munjula-portfolio.git
-Navigate to the folder:
 
-Bash
-cd Shivaji-munjula-portfolio
-Install dependencies:
+```
 
-Bash
+
+2. **Install Dependencies**
+> **⚠️ Critical:** You must use the `--legacy-peer-deps` flag to bypass React 19 version conflicts with certain UI libraries.
+
+
+```bash
 npm install --legacy-peer-deps
-Start the development server:
 
-Bash
+```
+
+
+3. **Run Locally**
+```bash
 npm start
-Note: This project uses craco start to handle custom configurations.
 
-🏗 Vercel Deployment Settings
-To avoid build failures on Vercel, ensure your Framework Settings match the following:
+```
 
-Framework Preset: Create React App
 
-Build Command: npm run build (runs craco build)
 
-Output Directory: build
+---
 
-Install Command: npm install --legacy-peer-deps
+## 🌐 Deployment Configuration (Vercel)
 
-📄 License
-Personal portfolio of Shivaji Munjula. All rights reserved.
+If you are deploying this project on **Vercel**, use the following **Framework Settings** to ensure a successful build:
+
+| Setting | Value |
+| --- | --- |
+| **Framework Preset** | `Create React App` |
+| **Build Command** | `npm run build` |
+| **Output Directory** | `build` |
+| **Install Command** | `npm install --legacy-peer-deps` |
+
+---
