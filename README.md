@@ -1,5 +1,5 @@
 # Here are your Instructions
-Shivaji Munjula | Portfolio 🚀
+# Shivaji Munjula | Portfolio 🚀
 A professional portfolio showcasing my work as an Omniverse and Simulation Engineer at TCS. This project highlights my expertise in Unity, NVIDIA Omniverse, and Industrial Digital Twins.
 
 🛠 Tech Stack
