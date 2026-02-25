@@ -8,7 +8,7 @@ export const personalInfo = {
   email: "shivajimunjula@gmail.com",
   linkedin: "linkedin.com/in/shivaji-munjula-sde",
   github: "github.com/shivajimunjula-source",
-  website: "shivajimunjula.dev"
+  website: "https://shivaji-munjula-portfolio-xi43.vercel.app/"
 };
 
 export const about = {
@@ -22,7 +22,7 @@ export const skills = {
     { name: "USD Layers/Variants", level: 85 },
     { name: "MaterialX/MDL", level: 80 },
     { name: "RTX Rendering", level: 85 },
-    { name: "Isaac Sim", level: 75 },
+    { name: "Isaac Sim", level: 80 },
     { name: "Nucleus", level: 80 }
   ],
   "Programming": [
@@ -32,7 +32,7 @@ export const skills = {
   ],
   "XR & Simulation": [
     { name: "Unity", level: 90 },
-    { name: "VR/AR Development", level: 85 },
+    { name: "VR/AR Development", level: 90 },
     { name: "CloudXR", level: 80 },
     { name: "Physics Simulation", level: 85 }
   ],
@@ -193,7 +193,7 @@ export const projects = [
     title: "VR Training Simulations",
     category: "XR Experience",
     description: "Immersive VR training experiences for surgical, equipment operation, and fitness scenarios",
-    technologies: ["Unity", "VR", "Haptics", "Leap Motion"],
+    technologies: ["Unity", "VR", "Haptics", "Leap Motion","c#"],
     image: "https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?w=800&q=80",
     features: [
       "6-DoF equipment simulation",
